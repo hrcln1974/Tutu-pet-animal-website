@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutu Pet Rações - Teresópolis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --amarelo: #FFD700;
+            --azul: #003D99;
+            --azul-claro: #0052CC;
+            --cinza: #f5f5f5;
+            --texto: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--texto);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .logo img {
+                height: 40px;
+            }
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe56;
+            transform: scale(1.05);
+        }
+
+        /* Banner Promocional */
+        .banner {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: slideDown 0.5s ease-out;
+            background: white;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .banner-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .banner-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .banner-text p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .banner-cta {
+            background: white;
+            color: #FF6B35;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .banner-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--amarelo) 0%, #FFC700 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--azul);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--azul);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--azul-claro);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,61,153,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--azul);
+            border: 2px solid var(--azul);
+        }
+
+        .btn-secondary:hover {
+            background: var(--azul);
+            color: white;
+        }
+
+        /* Diferenciais */
+        .diferenciais {
+            padding: 3rem 2rem;
+            background: var(--cinza);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--azul);
+            margin-bottom: 2rem;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .diferencial-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .diferencial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,61,153,0.2);
+        }
+
+        .diferencial-icon {
+            font-size: 2.5rem;
+            color: var(--amarelo);
+            margin-bottom: 1rem;
+        }
+
+        .diferencial-card h3 {
+            color: var(--azul);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Produtos */
+        .produtos {
+            padding: 3rem 2rem;
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .produto-card {
+            background: white;
+            border: 2px solid var(--cinza);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .produto-card:hover {
+            border-color: var(--azul);
+            box-shadow: 0 4px 12px rgba(0,61,153,0.15);
+        }
+
+        .produto-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .produto-card h4 {
+            color: var(--azul);
+            font-size: 0.95rem;
+        }
+
+        /* Horários */
+        .horarios {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .horarios-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .horario-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-size: 1.1rem;
+        }
+
+        .horario-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Contato */
+        .contato {
+            padding: 3rem 2rem;
+            background: var(--cinza);
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contato-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .contato-card h3 {
+            color: var(--azul);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contato-card i {
+            color: var(--amarelo);
+            font-size: 1.3rem;
+        }
+
+        .contato-card p {
+            color: var(--texto);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--azul);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--amarelo);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .banner-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .banner-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .banner-text p {
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .diferenciais-grid,
+            .produtos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="icon2.png" alt="Casa Animal Rações">
+            <span class="logo-text">Casa Animal Rações</span>
+        </div>
+        <div class="header-contact">
+            <span style="display: none;">📍 Teresópolis - RJ</span>
+            <a href="https://wa.me/5521996875730" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                Faça seu Pedido
+            </a>
+        </div>
+    </header>
+
+    <!-- Banner Promocional -->
+    <div class="banner">
+        <div class="banner-content">
+            <img src="banner.png" alt="Promoção Casa Animal Rações" style="cursor: pointer;" onclick="window.open('https://wa.me/5521994147877', '_blank')">
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Casa Animal Rações</h1>
+        <p>Pet Shop, Agropecuária</p>
+        <div class="hero-cta">
+            <a href="https://wa.me/5521996875730" class="btn btn-primary" target="_blank">
+                <i class="fab fa-whatsapp"></i> Peça pelo WhatsApp
+            </a>
+            <button class="btn btn-secondary" onclick="document.querySelector('.contato').scrollIntoView({behavior: 'smooth'})">
+                <i class="fas fa-map-marker-alt"></i> Localização
+            </button>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <h2 class="section-title">Por que escolher a Casa Animal?</h2>
+        <div class="diferenciais-grid">
+            <div class="diferencial-card">
+                <div class="diferencial-icon"><i class="fas fa-truck"></i></div>
+                <h3>Entrega Grátis</h3>
+                <p>Em Teresópolis</p>
+            </div>
+            <div class="diferencial-card">
+                <div class="diferencial-icon"><i class="fas fa-clock"></i></div>
+                <h3>Mesmo Dia</h3>
+                <p>Entrega rápida</p>
+            </div>
+            <div class="diferencial-card">
+                <div class="diferencial-icon"><i class="fas fa-calendar-days"></i></div>
+                <h3>Feriados</h3>
+                <p>Atendimento especial</p>
+            </div>
+            <div class="diferencial-card">
+                <div class="diferencial-icon"><i class="fas fa-credit-card"></i></div>
+                <h3>Formas de Pagamento</h3>
+                <p>Diversas opções</p>
+            </div>
+            <div class="diferencial-card">
+                <div class="diferencial-icon"><i class="fab fa-whatsapp"></i></div>
+                <h3>Pedido Direto</h3>
+                <p>Pelo WhatsApp</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos e Serviços -->
+    <section class="produtos">
+        <h2 class="section-title">Produtos e Serviços</h2>
+        <div class="produtos-grid">
+            <div class="produto-card">
+                <div class="produto-icon">🌾</div>
+                <h4>Rações Ensacadas</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">⚖️</div>
+                <h4>Rações a Granel</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🌱</div>
+                <h4>Produtos para Sítio</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🎁</div>
+                <h4>Acessórios</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🐕</div>
+                <h4>Cães</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🐈</div>
+                <h4>Gatos</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🐦</div>
+                <h4>Aves</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🐠</div>
+                <h4>Peixes</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🐴</div>
+                <h4>Cavalos</h4>
+            </div>
+            <div class="produto-card">
+                <div class="produto-icon">🐷</div>
+                <h4>Suínos</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horários -->
+    <section class="horarios">
+        <h2 class="section-title" style="color: white;">Horários de Funcionamento</h2>
+        <div class="horarios-content">
+            <div class="horario-item">
+                <span>Segunda a Sábado</span>
+                <strong>08h às 19h</strong>
+            </div>
+            <div class="horario-item">
+                <span>Domingo</span>
+                <strong>08h às 13h</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contato" id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contato-grid">
+            <div class="contato-card">
+                <h3><i class="fas fa-phone"></i> WhatsApp</h3>
+                <p><a href="https://wa.me/5521996875730" style="color: var(--azul); text-decoration: none; font-weight: bold;" target="_blank">(21) 99687-5730</a></p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Peça diretamente pelo WhatsApp</p>
+            </div>
+            <div class="contato-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+                <p>Rua José Bandeira Viana,403<br>São Pedro — Teresópolis — RJ</p>
+            </div>
+            <div class="contato-card">
+                <h3><i class="fas fa-share-alt"></i> Redes Sociais</h3>
+                <p style="margin: 1rem 0;">
+                    <a href="https://instagram.com" style="color: #E4405F; font-weight: bold; text-decoration: none; font-size: 1.1rem;" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a><br>
+                    <a href="https://facebook.com" style="color: #1877F2; font-weight: bold; text-decoration: none; font-size: 1.1rem; margin-top: 0.5rem; display: block;" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/5521996875730" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2024 Casa Animal Rações. Todos os direitos reservados.</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem; color: rgba(255,255,255,0.8);">Teresópolis - RJ</p>
+    </footer>
+</body>
+</html>
